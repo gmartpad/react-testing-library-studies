@@ -10,46 +10,50 @@ const MockTodoFooter = ({numberOfIncompleteTasks}) => {
   )
 }
 
-it("checks if the correct word (`task`) is appearing in TodoFooter", () => {
-  render(<MockTodoFooter numberOfIncompleteTasks={1}/>)
-  const paragraphElement = screen.getByText(/1 task left/i)
-  expect(paragraphElement).toBeInTheDocument()
+describe("TodoFooter with numberOfIncompleteTasks === 1", () => {
+  it("should render the correct word (`task`)", () => {
+    render(<MockTodoFooter numberOfIncompleteTasks={1}/>)
+    const paragraphElement = screen.getByText(/1 task left/i)
+    expect(paragraphElement).toBeInTheDocument()
+  })
+
+  it("should render the paragraphElement and check if is truthy", () => {
+    render(<MockTodoFooter numberOfIncompleteTasks={1}/>)
+    const paragraphElement = screen.getByText(/1 task left/i)
+    expect(paragraphElement).toBeTruthy()
+  })
+  
+  it("should render the paragraphElement and check if is visible on screen to the user", () => {
+    render(<MockTodoFooter numberOfIncompleteTasks={1}/>)
+    const paragraphElement = screen.getByText(/1 task left/i)
+    expect(paragraphElement).toBeVisible()
+  })
+  
+  it("should render the paragraphElement and check if is not falsy", () => {
+    render(<MockTodoFooter numberOfIncompleteTasks={1}/>)
+    const paragraphElement = screen.getByText(/1 task left/i)
+    expect(paragraphElement).not.toBeFalsy()
+  })
+  
+  it("should render the paragraphElement and check if it has text content", () => {
+    render(<MockTodoFooter numberOfIncompleteTasks={1}/>)
+    const paragraphElement = screen.getByTestId("taskParagraph")
+    expect(paragraphElement).toHaveTextContent("1 task left")
+  })
+  
+  it("should render the paragraphElement and check if the text content is as expected", () => {
+    render(<MockTodoFooter numberOfIncompleteTasks={1}/>)
+    const paragraphElement = screen.getByTestId("taskParagraph")
+    expect(paragraphElement.textContent).toBe("1 task left")
+  })
 })
 
-it("checks if the correct word (`tasks`) is appearing in TodoFooter", () => {
-  render(<MockTodoFooter numberOfIncompleteTasks={2}/>)
-  const paragraphElement = screen.getByText(/2 tasks left/i)
-  expect(paragraphElement).toBeInTheDocument()
-})
-
-it("checks if the paragraphElement is truthy", () => {
-  render(<MockTodoFooter numberOfIncompleteTasks={1}/>)
-  const paragraphElement = screen.getByText(/1 task left/i)
-  expect(paragraphElement).toBeTruthy()
-})
-
-it("checks if the paragraphElement is visible on screen to the user", () => {
-  render(<MockTodoFooter numberOfIncompleteTasks={1}/>)
-  const paragraphElement = screen.getByText(/1 task left/i)
-  expect(paragraphElement).toBeVisible()
-})
-
-it("checks if the paragraphElement is visible on screen to the user", () => {
-  render(<MockTodoFooter numberOfIncompleteTasks={1}/>)
-  const paragraphElement = screen.getByText(/1 task left/i)
-  expect(paragraphElement).not.toBeFalsy()
-})
-
-it("checks if the paragraphElement has text content", () => {
-  render(<MockTodoFooter numberOfIncompleteTasks={1}/>)
-  const paragraphElement = screen.getByTestId("taskParagraph")
-  expect(paragraphElement).toHaveTextContent("1 task left")
-})
-
-it("checks if the paragraphElement has text content", () => {
-  render(<MockTodoFooter numberOfIncompleteTasks={1}/>)
-  const paragraphElement = screen.getByTestId("taskParagraph")
-  expect(paragraphElement.textContent).toBe("1 task left")
+describe("TodoFooter with numberOfImcompleteTasks === 2", () => {
+  it("should rentder the correct word (`tasks`)", () => {
+    render(<MockTodoFooter numberOfIncompleteTasks={2}/>)
+    const paragraphElement = screen.getByText(/2 tasks left/i)
+    expect(paragraphElement).toBeInTheDocument()
+  })
 })
 
 // You can have multiple assertions per test
