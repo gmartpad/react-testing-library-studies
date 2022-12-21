@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react"
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom'
 import TodoFooter from "../TodoFooter"
 
 const MockTodoFooter = ({numberOfIncompleteTasks}) => {
