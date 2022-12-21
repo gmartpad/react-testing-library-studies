@@ -29,10 +29,11 @@ function TodoList({
     return (
         <div className="todolist-container">
             <div className="todos-container">
-                <div>
+                <div data-testid="todoListContainer">
                     {
                         todos.map((todo, index) => (
                             <div 
+                                key={index}
                                 className={`todo-item ${todo.completed && "todo-item-active"}`} 
                                 onClick={() => updateTask(todo.id)}
                             >
